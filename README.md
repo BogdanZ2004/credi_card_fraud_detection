@@ -1,5 +1,7 @@
 # Detekcija Zloupotrebe Kreditnih Kartica
 
+> **Napomena:** Ova grana (`24_atributa`) koristi **24 od 30 atributa**, odabrana na osnovu analize važnosti atributa (`src/feature_selection.py`). Rezultati se porede sa glavnom granom (`main`) koja koristi svih 30 atributa. Poređenje je dostupno u sekciji Rezultati ispod.
+
 Projekat mašinskog učenja — binarna klasifikacija transakcija kreditnim karticama kao legitimnih ili prevarantskih, korišćenjem klasičnih ML modela (Logistička regresija, Stablo odlučivanja, Random Forest, XGBoost).
 
 ---
@@ -102,17 +104,29 @@ uv run python pipeline.py
 
 ---
 
-## Rezultati (test skup, ~42.700 transakcija)
+## Rezultati (test skup, ~42.700 transakcija) — 24 atributa
 
 | Model | Preciznost | Odziv | F1 | ROC AUC | AUPRC |
 |---|---|---|---|---|---|
-| Logistička regresija | 0.0553 | 0.8784 | 0.1040 | 0.9627 | 0.7389 |
-| Stablo odlučivanja | 0.0664 | 0.7703 | 0.1223 | 0.8977 | 0.6931 |
-| Random Forest (100) | 0.8429 | 0.7973 | 0.8194 | 0.9710 | 0.8339 |
-| Random Forest (150) | 0.8551 | 0.7973 | 0.8252 | 0.9773 | 0.8361 |
-| **XGBoost** | **0.8158** | **0.8378** | **0.8267** | **0.9738** | **0.8459** |
+| Logistička regresija | 0.0552 | 0.8784 | 0.1038 | 0.9548 | 0.7241 |
+| Stablo odlučivanja | 0.0441 | 0.8243 | 0.0837 | 0.9054 | 0.6943 |
+| Random Forest (100) | 0.8000 | 0.8108 | 0.8054 | 0.9708 | 0.8203 |
+| Random Forest (150) | 0.8406 | 0.7838 | 0.8112 | 0.9498 | 0.8292 |
+| **XGBoost** | **0.7867** | **0.7973** | **0.7919** | **0.9714** | **0.8275** |
 
-**Najbolji model: XGBoost** — najviši AUPRC (0.8459) i najviši Odziv (0.8378).
+**Najbolji model: XGBoost** — najviši AUPRC (0.8275).
+
+### Poređenje sa 30 atributa (grana `main`) — XGBoost
+
+| Metrika | 30 atributa | 24 atributa |
+|---|---|---|
+| Preciznost | 0.8158 | 0.7867 |
+| Odziv | 0.8378 | 0.7973 |
+| F1 | 0.8267 | 0.7919 |
+| ROC AUC | 0.9738 | 0.9714 |
+| AUPRC | 0.8459 | 0.8275 |
+
+**Zaključak:** Model sa 30 atributa postiže bolje rezultate po svim metrikama. Uklanjanje 6 atributa (V15, V22, V23, V24, V25, V28) smanjuje performanse, što znači da i slabije rangirani atributi doprinose tačnosti modela.
 
 ---
 
@@ -120,11 +134,11 @@ uv run python pipeline.py
 
 | Model | Parametri | AUPRC (CV) |
 |---|---|---|
-| Logistička regresija | `C=0.1` | 0.7675 |
-| Stablo odlučivanja | `max_depth=10, min_samples_leaf=8, criterion=entropy` | 0.6409 |
-| Random Forest (100) | `max_features=sqrt, max_depth=None` | 0.8448 |
-| Random Forest (150) | `max_features=sqrt, max_depth=None` | 0.8477 |
-| XGBoost | `learning_rate=0.3, max_depth=7, subsample=0.7, colsample_bytree=0.8` | 0.8449 |
+| Logistička regresija | `C=100` | 0.7664 |
+| Stablo odlučivanja | `max_depth=10, min_samples_leaf=8, criterion=entropy` | 0.6568 |
+| Random Forest (100) | `max_features=sqrt, max_depth=20` | 0.8412 |
+| Random Forest (150) | `max_features=sqrt, max_depth=None` | 0.8409 |
+| XGBoost | `learning_rate=0.3, max_depth=7, subsample=0.7, colsample_bytree=0.8` | 0.8376 |
 
 ---
 
