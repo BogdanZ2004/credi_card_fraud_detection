@@ -1,0 +1,18 @@
+# Virtual environment
+.venv/
+
+# Dataset — prevelik za GitHub (144MB), preuzeti sa Kaggle
+data/raw/creditcard.csv
+
+# Generisani fajlovi — pipeline ih kreira automatski
+data/processed/
+models/
+results/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# OS
+.DS_Store
