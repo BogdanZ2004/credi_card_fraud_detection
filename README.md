@@ -63,8 +63,7 @@ Svaka transakcija sadrži:
 │   ├── eda_analysis.py            # Eksplorativna analiza (EDA)
 │   ├── train.py                   # Podela, skaliranje, SMOTE, tuning, treniranje
 │   ├── evaluate.py                # Evaluacija modela i generisanje grafika
-│   ├── feature_selection.py       # Analiza važnosti atributa
-│   └── predict.py                 # Demonstracija predikcije na test skupu
+│   └── feature_selection.py       # Analiza važnosti atributa
 ├── app/
 │   └── app.py                     # Streamlit web aplikacija
 ├── pipeline.py                    # Glavni ulaz — pokreće ceo pipeline
