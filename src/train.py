@@ -98,6 +98,16 @@ def scale_features(X_train, X_val, X_test, models_dir):
     return X_train, X_val, X_test
 
 
+TOP_24_FEATURES = [
+    'V14', 'V10', 'V4', 'V12', 'V17', 'V3', 'V11', 'V16',
+    'V2', 'V9', 'V7', 'V8', 'V21', 'V18', 'V19', 'Hour',
+    'V5', 'V27', 'V1', 'V6', 'V13', 'V20', 'Scaled_Amount', 'V26'
+]
+
+def select_features(X_train, X_val, X_test):
+    return X_train[TOP_24_FEATURES], X_val[TOP_24_FEATURES], X_test[TOP_24_FEATURES]
+
+
 def apply_smote(X_train, y_train, random_state=42):
     smote = SMOTE(random_state=random_state)
     return smote.fit_resample(X_train, y_train)
@@ -194,16 +204,19 @@ def train_pipeline(processed_data_path, models_dir, val_data_path, test_data_pat
     print("\n3. Skaliranje 'Amount' kolone (fit samo na trening skupu)...")
     X_train, X_val, X_test = scale_features(X_train, X_val, X_test, models_dir)
 
-    print("\n4. Podešavanje hiperparametara (RandomizedSearchCV, SMOTE unutar folda)...")
+    print("\n4. Odabir 24 najbitnija atributa...")
+    X_train, X_val, X_test = select_features(X_train, X_val, X_test)
+
+    print("\n5. Podešavanje hiperparametara (RandomizedSearchCV, SMOTE unutar folda)...")
     best_params = tune_hyperparameters(X_train, y_train, metrics_dir)
 
-    print("\n5. Primena SMOTE tehnike SAMO na Trening setu...")
+    print("\n6. Primena SMOTE tehnike SAMO na Trening setu...")
     X_train_smote, y_train_smote = apply_smote(X_train, y_train)
 
-    print("\n6. Treniranje finalnih modela sa najboljim parametrima...")
+    print("\n7. Treniranje finalnih modela sa najboljim parametrima...")
     train_models(X_train_smote, y_train_smote, best_params, models_dir)
 
-    print("\n7. Čuvanje Validacionog i Test seta za evaluaciju...")
+    print("\n8. Čuvanje Validacionog i Test seta za evaluaciju...")
     val_df = X_val.copy()
     val_df['Class'] = y_val
     val_df.to_csv(val_data_path, index=False)

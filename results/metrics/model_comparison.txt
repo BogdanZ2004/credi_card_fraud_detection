@@ -1,37 +1,37 @@
 === POREĐENJE MODELA ZA DETEKCIJU PREVARA ===
 
 --- DecisionTree ---
-Preciznost (Precision): 0.0664
-Odziv (Recall):         0.7703  <-- NAJBITNIJE
-F1-skor:                0.1223
-ROC AUC:                0.8977
-AUPRC:                  0.6931
+Preciznost (Precision): 0.0441
+Odziv (Recall):         0.8243  <-- NAJBITNIJE
+F1-skor:                0.0837
+ROC AUC:                0.9054
+AUPRC:                  0.6943
 
 --- LogisticRegression ---
-Preciznost (Precision): 0.0553
+Preciznost (Precision): 0.0552
 Odziv (Recall):         0.8784  <-- NAJBITNIJE
-F1-skor:                0.1040
-ROC AUC:                0.9627
-AUPRC:                  0.7389
+F1-skor:                0.1038
+ROC AUC:                0.9548
+AUPRC:                  0.7241
 
 --- RandomForest_100 ---
-Preciznost (Precision): 0.8429
-Odziv (Recall):         0.7973  <-- NAJBITNIJE
-F1-skor:                0.8194
-ROC AUC:                0.9710
-AUPRC:                  0.8339
+Preciznost (Precision): 0.8000
+Odziv (Recall):         0.8108  <-- NAJBITNIJE
+F1-skor:                0.8054
+ROC AUC:                0.9708
+AUPRC:                  0.8203
 
 --- RandomForest_150 ---
-Preciznost (Precision): 0.8551
-Odziv (Recall):         0.7973  <-- NAJBITNIJE
-F1-skor:                0.8252
-ROC AUC:                0.9773
-AUPRC:                  0.8361
+Preciznost (Precision): 0.8406
+Odziv (Recall):         0.7838  <-- NAJBITNIJE
+F1-skor:                0.8112
+ROC AUC:                0.9498
+AUPRC:                  0.8292
 
 --- XGBoost ---
-Preciznost (Precision): 0.8158
-Odziv (Recall):         0.8378  <-- NAJBITNIJE
-F1-skor:                0.8267
-ROC AUC:                0.9738
-AUPRC:                  0.8459
+Preciznost (Precision): 0.7867
+Odziv (Recall):         0.7973  <-- NAJBITNIJE
+F1-skor:                0.7919
+ROC AUC:                0.9714
+AUPRC:                  0.8275
 
