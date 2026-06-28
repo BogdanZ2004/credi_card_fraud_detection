@@ -1,0 +1,37 @@
+=== POREĐENJE MODELA ZA DETEKCIJU PREVARA ===
+
+--- DecisionTree ---
+Preciznost (Precision): 0.0664
+Odziv (Recall):         0.7703  <-- NAJBITNIJE
+F1-skor:                0.1223
+ROC AUC:                0.8977
+AUPRC:                  0.6931
+
+--- LogisticRegression ---
+Preciznost (Precision): 0.0553
+Odziv (Recall):         0.8784  <-- NAJBITNIJE
+F1-skor:                0.1040
+ROC AUC:                0.9627
+AUPRC:                  0.7389
+
+--- RandomForest_100 ---
+Preciznost (Precision): 0.8429
+Odziv (Recall):         0.7973  <-- NAJBITNIJE
+F1-skor:                0.8194
+ROC AUC:                0.9710
+AUPRC:                  0.8339
+
+--- RandomForest_150 ---
+Preciznost (Precision): 0.8551
+Odziv (Recall):         0.7973  <-- NAJBITNIJE
+F1-skor:                0.8252
+ROC AUC:                0.9773
+AUPRC:                  0.8361
+
+--- XGBoost ---
+Preciznost (Precision): 0.8158
+Odziv (Recall):         0.8378  <-- NAJBITNIJE
+F1-skor:                0.8267
+ROC AUC:                0.9738
+AUPRC:                  0.8459
+
