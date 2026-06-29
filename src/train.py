@@ -54,8 +54,7 @@ SEARCH_SPACES = {
 
 
 def get_base_models():
-    # n_jobs=1 on all models here — RandomizedSearchCV runs folds in parallel
-    # so having n_jobs=-1 on models too causes nested parallelism conflicts
+    # n_jobs=1 jer RandomizedSearchCV već paralelizuje foldove — dvostruka paralelizacija pravi konflikte
     return {
         "LogisticRegression": LogisticRegression(max_iter=1000, random_state=42),
         "DecisionTree":       DecisionTreeClassifier(random_state=42),

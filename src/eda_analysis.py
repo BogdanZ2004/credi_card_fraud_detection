@@ -14,7 +14,7 @@ def run_eda(input_path, figures_dir):
     # Osiguravamo da folder za slike postoji
     os.makedirs(figures_dir, exist_ok=True)
     
-    # --- GRAFIK 1: Prikaz nebalansiranosti klasa ---
+    # Grafik koji prikazuje koliko ima legitimnih a koliko prevarantskih transakcija
     print("1. Generisanje grafika raspodele klasa...")
     plt.figure(figsize=(8, 5))
     ax = sns.countplot(x='Class', data=df, palette='Set2')
@@ -34,7 +34,7 @@ def run_eda(input_path, figures_dir):
     print(f"   -> Procenat prevara: {fraud_pct:.3f}%")
     print(f"   -> Slika sačuvana u: {class_fig_path}")
 
-    # --- GRAFIK 2: Matrica korelacije ---
+    # Matrica korelacije koja pokazuje koje varijable su međusobno povezane
     print("\n2. Generisanje matrice korelacije (ovo može potrajati par sekundi)...")
     plt.figure(figsize=(12, 10))
     corr = df.corr(numeric_only=True)
@@ -46,7 +46,7 @@ def run_eda(input_path, figures_dir):
     plt.close()
     print(f"   -> Slika sačuvana u: {corr_fig_path}")
 
-    # --- TEKSTUALNI IZVEŠTAJ O KORELACIJI ---
+    # Top 10 atributa po apsolutnoj korelaciji sa ciljnom varijablom Class
     print("\n==================================================")
     print("Atributi koji imaju najveći uticaj na detekciju prevare:")
     print("==================================================")

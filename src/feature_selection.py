@@ -82,8 +82,7 @@ def exhaustive_feature_selection(processed_data_path, original_model_path, metri
     # Pakovanje u tabelu radi lakšeg sortiranja
     rezultati_df = pd.DataFrame(svi_rezultati)
     
-    # Sortiramo tako da najbolji Odziv (Recall) bude prvi. 
-    # Ako imaju isti odziv, gledamo ko ima bolju Preciznost.
+    # Sortiramo po odzovu pa po preciznosti kao sekundarnom kriterijumu
     rezultati_df = rezultati_df.sort_values(by=['Odziv_Recall', 'Preciznost_Precision'], ascending=[False, False])
     
     # Resetujemo indeks za lepši prikaz ranga
